@@ -15,6 +15,10 @@ def print_squares():
 #     for i in range(7):
 #         for j in range(7):
 
+def print_numPyramid():
+    for i in range(0, 8):
+        print(i * i)
+
 def main():
     print_nums()
     print_advice()
@@ -22,5 +26,6 @@ def main():
     print_advice()
     # print_figure1()
     print_squares()
+    print_numPyramid()
 
 main()
