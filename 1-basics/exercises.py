@@ -19,6 +19,10 @@ def print_numPyramid():
     for i in range(0, 8):
         print(i * i)
 
+def print_numBox(n):
+    for i in range(1, n + 1):
+        print("[", i, "]")
+
 def main():
     print_nums()
     print_advice()
@@ -27,5 +31,6 @@ def main():
     # print_figure1()
     print_squares()
     print_numPyramid()
+    print_numBox(15)
 
 main()
