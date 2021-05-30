@@ -23,6 +23,14 @@ def print_numBox(n):
     for i in range(1, n + 1):
         print("[", i, "]")
 
+def print_only(number):
+    if number > 0:
+        print("Number is positive.")
+    elif number == 0:
+        print("Number is neither positive nor negative.")
+    else:
+        print("Number is negative.")
+
 def main():
     print_nums()
     print_advice()
@@ -32,5 +40,8 @@ def main():
     print_squares()
     print_numPyramid()
     print_numBox(15)
+    print_only(10)
+    print_only(0)
+    print_only(-10)
 
 main()
