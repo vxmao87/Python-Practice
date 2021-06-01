@@ -1,7 +1,7 @@
 def roman_numeral_converter():
-    num = int(input("Type a number from 1 to 4999 to convert to Roman numerals: "))
-    if num < 0 or num > 5000:
-        raise ValueError("Your value must be greater than 0!")  
+    num = int(input("Type a number from 1 to 4999 to convert to Roman numerals: "))  
+    if num <= 0 or num >= 5000:
+        raise ValueError("Your value must be between 1 and 4999!")
     currentNum = num
     result = ""
 
