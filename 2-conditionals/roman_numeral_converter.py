@@ -1,12 +1,3 @@
-def fraction_sum(n):
-    if n < 1:
-        raise ValueError("n must be greater than 0")
-    total = 0
-    for i in range(1, n + 1):
-        # print(1/i)
-        total += 1/i
-    return total
-
 def roman_numeral_converter(num):
     if num < 0 or num > 5000:
         raise ValueError("Your value must be greater than 0!")  
@@ -122,7 +113,6 @@ def roman_numeral_converter(num):
 
 
 def main():
-    print(fraction_sum(10))
     print(roman_numeral_converter(4834))
 
 main()
