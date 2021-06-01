@@ -31,6 +31,10 @@ def print_only(number):
     else:
         print("Number is negative.")
 
+def print_powers_of_n(num1, num2):
+    for i in range(0, num2 + 1):
+        print(pow(num1, i), end=" ")
+
 def main():
     print_nums()
     print_advice()
@@ -43,5 +47,6 @@ def main():
     print_only(10)
     print_only(0)
     print_only(-10)
+    print_powers_of_n(5, 6)
 
 main()
