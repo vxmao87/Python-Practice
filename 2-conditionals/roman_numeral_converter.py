@@ -1,4 +1,5 @@
-def roman_numeral_converter(num):
+def roman_numeral_converter():
+    num = int(input("Type a number from 1 to 4999 to convert to Roman numerals: "))
     if num < 0 or num > 5000:
         raise ValueError("Your value must be greater than 0!")  
     currentNum = num
@@ -109,10 +110,10 @@ def roman_numeral_converter(num):
             currentNum -= 1
             result += "I"
             
-    return result
+    print(result)
 
 
 def main():
-    print(roman_numeral_converter(4834))
+    roman_numeral_converter()
 
 main()
