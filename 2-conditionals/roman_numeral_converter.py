@@ -1,17 +1,29 @@
+# This method takes in a number (from 1 to 4999) and converts it into Roman numerals.
+
 def roman_numeral_converter():
-    num = int(input("Type a number from 1 to 4999 to convert to Roman numerals: "))  
+    num = int(input("Type a number from 1 to 4999 to convert to Roman numerals: ")) 
+    # Raises an error if input is not a number between 1 and 4999 
     if num <= 0 or num >= 5000:
         raise ValueError("Your value must be between 1 and 4999!")
+
+    # currentNum is the inputted number which will be manipulated
     currentNum = num
+
+    # The inputted number in Roman numerals
     result = ""
 
-    # Numbers 1000 to 4999
+    # All 'if' statements below are used depending on the number given.
+    # If currentNum falls within the given range, then the statements determine
+    # how big the number is, subtract that value from currentNum and then add
+    # the corresponding letters into the result string above.
+
+    # If currentNum is between 1000 to 4999
     if currentNum >= 1000:
         while currentNum >= 1000:
             currentNum -= 1000
             result += "M"
 
-    # Numbers 500 to 999
+    # If currentNum is between 500 to 999
     if currentNum < 1000 and currentNum >= 500:
         if currentNum >= 900:
             currentNum -= 900
@@ -29,7 +41,7 @@ def roman_numeral_converter():
             currentNum -= 500
             result += "D"
     
-    # Numbers 100 to 499
+    # If currentNum is between 100 to 499
     if currentNum < 500 and currentNum >= 100:
         if currentNum >= 400:
             currentNum -= 400
@@ -44,7 +56,7 @@ def roman_numeral_converter():
             currentNum -= 100
             result += "C"
 
-    # Numbers 50 to 99
+    # If currentNum is between 50 to 99
     if currentNum < 100 and currentNum >= 50:
         if currentNum >= 90:
             currentNum -= 90
@@ -62,7 +74,7 @@ def roman_numeral_converter():
             currentNum -= 50
             result += "L"
     
-    # Numbers 10 to 49
+    # If currentNum is between 10 to 49
     if currentNum < 50 and currentNum >= 10:
         if currentNum >= 40:
             currentNum -= 40
@@ -77,7 +89,7 @@ def roman_numeral_converter():
             currentNum -= 10
             result += "X"
 
-    # Numbers 5 to 9
+    # If currentNum is between 5 to 9
     if currentNum < 10 and currentNum >= 5:
         if currentNum == 9:
             currentNum -= 9
@@ -95,7 +107,7 @@ def roman_numeral_converter():
             currentNum -= 5
             result += "V"
 
-    # Numbers 1 to 4
+    # If currentNum is between 1 to 4
     if currentNum < 5 and currentNum > 0:
         if currentNum == 4:
             currentNum -= 4
