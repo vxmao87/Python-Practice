@@ -24,13 +24,4 @@ def main():
     # Print the resulting check digit
     print("Your check digit is: ", result)
 
-# Checks the number of digits in the integer by performing
-# floor division by 10 repeatedly on the integer
-def number_of_digits(num):
-    digits = 0
-    while num > 0:
-        digits = digits + 1
-        num = num // 10
-    return digits
-
 main()
