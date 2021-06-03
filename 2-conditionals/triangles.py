@@ -13,9 +13,9 @@ def main():
     if not is_triangle(a, b, c):
         raise ValueError("This shape is not a triangle! Try again...")
     
-    print(determine_angle(a, b, c)) # angle C
-    print(determine_angle(b, c, a)) # angle A
-    print(determine_angle(c, a, b)) # angle B
+    print("Measure of angle A: ", determine_angle(b, c, a)) # angle A
+    print("Measure of angle B: ", determine_angle(c, a, b)) # angle B
+    print("Measure of angle C: ", determine_angle(a, b, c)) # angle C
 
 # For the shape to be a triangle, no one side may be
 # equal to or longer than the sum of the other two sides.
@@ -27,6 +27,6 @@ def is_triangle(a, b, c):
 def determine_angle(a, b, c):
     value1 = math.pow(a, 2) + math.pow(b, 2) - math.pow(c, 2)
     value2 = 2 * a * b
-    return value1 / value2
+    return math.degrees(math.acos(value1 / value2))
 
 main()

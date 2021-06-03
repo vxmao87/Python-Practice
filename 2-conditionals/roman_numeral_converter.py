@@ -6,120 +6,120 @@ def roman_numeral_converter():
     if num <= 0 or num >= 5000:
         raise ValueError("Your value must be between 1 and 4999!")
 
-    # currentNum is the inputted number which will be manipulated
-    currentNum = num
+    # current_num is the inputted number which will be manipulated
+    current_num = num
 
     # The inputted number in Roman numerals
     result = ""
 
     # All 'if' statements below are used depending on the number given.
-    # If currentNum falls within the given range, then the statements determine
-    # how big the number is, subtract that value from currentNum and then add
+    # If current_num falls within the given range, then the statements determine
+    # how big the number is, subtract that value from current_num and then add
     # the corresponding letters into the result string above.
 
-    # If currentNum is between 1000 to 4999
-    if currentNum >= 1000:
-        while currentNum >= 1000:
-            currentNum -= 1000
+    # If current_num is between 1000 to 4999
+    if current_num >= 1000:
+        while current_num >= 1000:
+            current_num -= 1000
             result += "M"
 
-    # If currentNum is between 500 to 999
-    if currentNum < 1000 and currentNum >= 500:
-        if currentNum >= 900:
-            currentNum -= 900
+    # If current_num is between 500 to 999
+    if current_num < 1000 and current_num >= 500:
+        if current_num >= 900:
+            current_num -= 900
             result += "CM"
-        elif currentNum >= 800:
-            currentNum -= 800
+        elif current_num >= 800:
+            current_num -= 800
             result += "DCCC"
-        elif currentNum >= 700:
-            currentNum -= 700
+        elif current_num >= 700:
+            current_num -= 700
             result += "DCC"
-        elif currentNum >= 600:
-            currentNum -= 600
+        elif current_num >= 600:
+            current_num -= 600
             result += "DC"
         else:
-            currentNum -= 500
+            current_num -= 500
             result += "D"
     
-    # If currentNum is between 100 to 499
-    if currentNum < 500 and currentNum >= 100:
-        if currentNum >= 400:
-            currentNum -= 400
+    # If current_num is between 100 to 499
+    if current_num < 500 and current_num >= 100:
+        if current_num >= 400:
+            current_num -= 400
             result += "CD"
-        elif currentNum >= 300:
-            currentNum -= 300
+        elif current_num >= 300:
+            current_num -= 300
             result += "CCC"
-        elif currentNum >= 200:
-            currentNum -= 200
+        elif current_num >= 200:
+            current_num -= 200
             result += "CC"
         else:
-            currentNum -= 100
+            current_num -= 100
             result += "C"
 
-    # If currentNum is between 50 to 99
-    if currentNum < 100 and currentNum >= 50:
-        if currentNum >= 90:
-            currentNum -= 90
+    # If current_num is between 50 to 99
+    if current_num < 100 and current_num >= 50:
+        if current_num >= 90:
+            current_num -= 90
             result += "XC"
-        elif currentNum >= 80:
-            currentNum -= 80
+        elif current_num >= 80:
+            current_num -= 80
             result += "LXXX"
-        elif currentNum >= 70:
-            currentNum -= 70
+        elif current_num >= 70:
+            current_num -= 70
             result += "LXX"
-        elif currentNum >= 60:
-            currentNum -= 60
+        elif current_num >= 60:
+            current_num -= 60
             result += "LX"
         else:
-            currentNum -= 50
+            current_num -= 50
             result += "L"
     
-    # If currentNum is between 10 to 49
-    if currentNum < 50 and currentNum >= 10:
-        if currentNum >= 40:
-            currentNum -= 40
+    # If current_num is between 10 to 49
+    if current_num < 50 and current_num >= 10:
+        if current_num >= 40:
+            current_num -= 40
             result += "XL"
-        elif currentNum >= 30:
-            currentNum -= 30
+        elif current_num >= 30:
+            current_num -= 30
             result += "XXX"
-        elif currentNum >= 20:
-            currentNum -= 20
+        elif current_num >= 20:
+            current_num -= 20
             result += "XX"
         else:
-            currentNum -= 10
+            current_num -= 10
             result += "X"
 
-    # If currentNum is between 5 to 9
-    if currentNum < 10 and currentNum >= 5:
-        if currentNum == 9:
-            currentNum -= 9
+    # If current_num is between 5 to 9
+    if current_num < 10 and current_num >= 5:
+        if current_num == 9:
+            current_num -= 9
             result += "IX"
-        elif currentNum == 8:
-            currentNum -= 8
+        elif current_num == 8:
+            current_num -= 8
             result += "VIII"
-        elif currentNum == 7:
-            currentNum -= 7
+        elif current_num == 7:
+            current_num -= 7
             result += "VII"
-        elif currentNum == 6:
-            currentNum -= 6
+        elif current_num == 6:
+            current_num -= 6
             result += "VI"
         else:
-            currentNum -= 5
+            current_num -= 5
             result += "V"
 
-    # If currentNum is between 1 to 4
-    if currentNum < 5 and currentNum > 0:
-        if currentNum == 4:
-            currentNum -= 4
+    # If current_num is between 1 to 4
+    if current_num < 5 and current_num > 0:
+        if current_num == 4:
+            current_num -= 4
             result += "IV"
-        elif currentNum == 3:
-            currentNum -= 3
+        elif current_num == 3:
+            current_num -= 3
             result += "III"
-        elif currentNum == 2:
-            currentNum -= 2
+        elif current_num == 2:
+            current_num -= 2
             result += "II"
         else:
-            currentNum -= 1
+            current_num -= 1
             result += "I"
             
     print(result)
