@@ -10,6 +10,10 @@ def print_intro():
     print("whether your number is higher or lower than my number!")
     print()
 
+def set_difficulty():
+    return "Hard"
+
+
 # Determines whether the number is higher or lower than the user's guess
 def determine_distance(number, guess):
     if number > guess:
@@ -17,14 +21,23 @@ def determine_distance(number, guess):
     else:
         return "lower"
 
-def main():
-    number = random.randint(1, 100)
+def get_guess():
     guess = int(input("Guess my number! "))
+    while guess < 0 or guess > 100:
+        print("Out of range. Try again.")
+        guess = int(input("Guess my number! "))
+    return guess
+
+def main():
+    print_intro()
+    difficulty = set_difficulty()
+    number = random.randint(1, 100)
+    guess = get_guess()
     num_guesses = 1
     while guess != number:
         distance = determine_distance(number, guess)
         print("Incorrect. The correct number is", distance, "than your guess.")
-        guess = int(input("Guess my number again! "))
+        guess = get_guess()
         num_guesses += 1
     print("Nice! You guessed my number in", num_guesses, "tries.")
 
