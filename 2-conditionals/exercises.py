@@ -36,13 +36,19 @@ def dice_sum():
     user_sum = int(input("Desired dice sum: "))
     sum_1 = random.randint(1, 6)
     sum_2 = random.randint(1, 6)
-
-
+    count = 0
+    while sum_1 + sum_2 != user_sum:
+        count += 1
+        print("{} and {} = {}".format(sum_1, sum_2, sum_1 + sum_2))
+        sum_1 = random.randint(1, 6)
+        sum_2 = random.randint(1, 6)
+    print("{} and {} = {}".format(sum_1, sum_2, sum_1 + sum_2))
+    print("This took {} rolls to get your desired sum of {}!".format(count, user_sum))
 
 def main():
     print(fraction_sum(10))
-    longest_name(3)
-    smallest_largest()
+    # longest_name(3)
+    # smallest_largest()
     dice_sum()
 
 main()
