@@ -1,3 +1,5 @@
+import random
+
 def fraction_sum(n):
     if n < 1:
         raise ValueError("n must be greater than 0")
@@ -22,7 +24,7 @@ def smallest_largest():
     largest = 0
     smallest = 0
     for i in range(1, times + 1):
-        user_num = int(input("Number", i))
+        user_num = int(input("Number ", i))
         if user_num > largest:
             largest = user_num
         elif user_num < smallest:
@@ -30,10 +32,17 @@ def smallest_largest():
     print("Smallest = ", smallest)
     print("Largest = ", largest)
 
+def dice_sum():
+    user_sum = int(input("Desired dice sum: "))
+    sum_1 = random.randint(1, 6)
+    sum_2 = random.randint(1, 6)
+
+
 
 def main():
     print(fraction_sum(10))
     longest_name(3)
     smallest_largest()
+    dice_sum()
 
 main()
