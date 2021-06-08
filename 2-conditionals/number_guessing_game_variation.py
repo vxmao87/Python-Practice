@@ -12,7 +12,7 @@ def print_intro():
 def play_game():
 
     # Set the bounds of the numbers to guess from 1 to 100
-    high_bound = 101
+    high_bound = 100
     low_bound = 1
 
     # Program makes the guess using the bounds above
@@ -45,9 +45,9 @@ def play_game():
         if hint.lower() == 'h':
             low_bound = guess + 1
         else:
-            high_bound = guess
+            high_bound = guess - 1
         
-        print("Bounds: {} to {}".format(low_bound, high_bound - 1))
+        print("Bounds: {} to {}".format(low_bound, high_bound))
 
         # Makes another guess and asks the user again
         guess = random.randint(low_bound, high_bound)

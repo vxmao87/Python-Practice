@@ -24,7 +24,7 @@ def get_guess():
     return guess
 
 def play_game():
-    number = random.randint(1, 101)
+    number = random.randint(1, 100)
     guess = get_guess()
     num_guesses = 1
     while guess != number:
