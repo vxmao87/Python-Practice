@@ -7,7 +7,7 @@ def main():
     STEPS = 50
     x_pos = 250
     y_pos = 250
-    panel.draw_rect(x_pos, y_pos, 1, 1)
+    panel.draw_rect(x_pos, y_pos, 5, 5)
 
     for i in range(STEPS):
         # time.sleep(1)
@@ -20,6 +20,6 @@ def main():
             x_pos -= 5
         else:
             x_pos += 5
-        panel.draw_rect(x_pos, y_pos, 1, 1)
+        panel.draw_rect(x_pos, y_pos, 5, 5)
 
 main()

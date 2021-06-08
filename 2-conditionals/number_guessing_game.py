@@ -28,9 +28,7 @@ def get_guess():
         guess = int(input("Guess my number! "))
     return guess
 
-def main():
-    print_intro()
-    difficulty = set_difficulty()
+def play_game():
     number = random.randint(1, 100)
     guess = get_guess()
     num_guesses = 1
@@ -40,5 +38,18 @@ def main():
         guess = get_guess()
         num_guesses += 1
     print("Nice! You guessed my number in", num_guesses, "tries.")
+    return num_guesses
+
+def main():
+    print_intro()
+    guess_total = play_game()
+    games = 1
+    play_again = input("Would you like to play again? (Type y/n)")
+    while play_again.lower() != "n":
+        guess_total += play_game()
+        games += 1
+        play_again = input("Would you like to play again? (Type y/n)")
+    average = guess_total / games
+    print("You made {} total guesses, played {} games, and took an average of {} guesses in a game.".format(guess_total, games, average))
 
 main()
