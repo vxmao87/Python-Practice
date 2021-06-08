@@ -29,8 +29,16 @@ def play_game():
     p1_points = 0
     p2_points = 0
     while p1_points < 100 and p2_points < 100:
-        print("Player 1 has {} points, and Player 2 has {} points.".format(p1_points, p2_points))
-        p1_points += roll_dice()
+        if p1_points != 0:
+            print("Player 1 has {} points.".format(p1_points))
+        p1_points += roll_dice(1)
+        print("Player 1 has {} points.".format(p1_points))
+        if p2_points != 0:
+            p2_points += roll_dice(2)
+    if p1_points > p2_points:
+        print("Player 1 wins!")
+    else:
+        print("Player 2 wins!")
 
 def main():
     print_intro()
