@@ -9,7 +9,8 @@ def prompt_for_file(message):
     filename = "3-files/word_counter/{}".format(user_input)
     while not os.path.isfile(filename):
         print("File not found. Try again.")
-        filename = input(message)
+        user_input = input(message)
+        filename = "3-files/word_counter/{}".format(user_input)
     return filename
 
 def main():
