@@ -7,7 +7,12 @@ def print_intro():
     print("You won't know what the story says, so you'll be in for a surprise!")
 
 def write_story():
-    adjective_1 = "red"
+    adjective_1 = input("Type in an adjective: ")
+    adjective_2 = input("Type in another adjective: ")
+    job = input("Type in a job or occupation: ")
+    place = input("Type in a place (a general area, not a country or city): ")
+    noun = input("Type a noun: ")
+    noun_plural = input("Type another noun in plural form: ")
     # with ("3-files/make_your_own_story/story.txt", "w") as outfile:
 
 def main():
