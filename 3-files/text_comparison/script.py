@@ -42,8 +42,8 @@ def main():
                         if differences == 1:
                             print("Differences found: ")
                         print("Difference #{}:".format(differences))
-                        print("> {}".format(line_1), end = "\n")
-                        print("< {}".format(line_2), end = "\n")
+                        print("> {}".format(line_1), line_1.rstrip())
+                        print("< {}".format(line_2), line_2.rstrip())
                     break
 
     # Prints a different message if there are no differences

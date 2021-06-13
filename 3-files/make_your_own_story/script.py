@@ -13,7 +13,18 @@ def write_story():
     place = input("Type in a place (a general area, not a country or city): ")
     noun = input("Type a noun: ")
     noun_plural = input("Type another noun in plural form: ")
-    # with ("3-files/make_your_own_story/story.txt", "w") as outfile:
+    adverb = input("Type an adverb: ")
+    with open ("3-files/make_your_own_story/new_story.txt", "w") as outfile:
+        with open ("3-files/make_your_own_story/story.txt") as file:
+            for line in file:
+                outfile.write(line.replace("<adjective 1>", adjective_1))
+                outfile.write(line.replace("<adjective 2>", adjective_2))
+                outfile.write(line.replace("<job/occupation>", job))
+                outfile.write(line.replace("<place>", place))
+                outfile.write(line.replace("<noun>", noun))
+                outfile.write(line.replace("<plural-noun>", noun_plural))
+                outfile.write(line.replace("<adverb>", adverb))
+        
 
 def main():
     print_intro()
