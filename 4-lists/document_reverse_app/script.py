@@ -15,9 +15,12 @@ def main():
     reversed_doc = []
     with open(filename) as file:
         for line in file:
-            line_list = []
-            line_list.append(line.rstrip().split())
-            reversed_doc.append(line_list)
+            reversed_doc.append(line.rstrip().split())
+    print(reversed_doc)
+    reversed_doc.reverse()
+    print(reversed_doc)
+    for i in range(len(reversed_doc)):
+        reversed_doc[i].reverse()
     print(reversed_doc)
 
 main()
