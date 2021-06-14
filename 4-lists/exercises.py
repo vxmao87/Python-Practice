@@ -40,7 +40,7 @@ def price_is_right(bids, correct_bid):
 def collapse(lis):
     final_lis = [0] * ((len(lis) + 1) // 2)
     lis_len = 0
-    for i in range(0, len(lis) - 3, 2):
+    for i in range(0, len(lis) - 1, 2):
         final_lis[lis_len] = lis[i] + lis[i + 1]
         lis_len += 1
     if lis_len != len(final_lis):
