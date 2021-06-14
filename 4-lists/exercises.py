@@ -86,6 +86,7 @@ def double_list(lis):
         lis.insert(i + 1, lis[i])
     return lis
 
+# Incomplete
 def scale_by_k(lis):
     length = len(lis)
     index = 0
@@ -95,6 +96,28 @@ def scale_by_k(lis):
                 lis.insert(index, lis[i])
                 i += 1
     return lis
+
+def remove_duplicates(lis):
+    lis = sorted(lis)
+    length = len(lis)
+    for i in range(length - 2):
+        if lis[i] == lis[i + 1]:
+            lis.pop(i + 1)
+    return lis
+
+def matrix_add(m_1, m_2):
+    if len(m_1) != len(m_2) or len(m_1[0]) != len(m_2[0]):
+        raise TypeError("Both matrices must be the same dimension!")
+    m_3 = []
+    for a in range(len(m_1)):
+        m_3.append([0] * len(m_1[0]))
+    print(m_3)
+    for i in range(0, len(m_1)):
+        for j in range(0, len(m_1[0])):
+            print("i =", i)
+            print("j =", j)
+            m_3[i][j] = m_1[i][j] + m_2[i][j]
+    return m_3
 
 def main():
 
@@ -127,5 +150,11 @@ def main():
     print(double_list(["how", "are", "you?"]))
 
     print(scale_by_k([4, 1, 2, 0, 3]))
+
+    print(remove_duplicates(["be", "be", "is", "not", "or", "question", "that", "the", "to", "to"]))
+
+    m_1 = [[2, 5, 6], [7, 4, 9], [10, 1, 6]]
+    m_2 = [[1, 7, 4], [2, 9, 5], [20, 25, 13]]
+    print(matrix_add(m_1, m_2))
 
 main()
