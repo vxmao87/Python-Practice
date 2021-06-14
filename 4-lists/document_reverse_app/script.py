@@ -15,12 +15,13 @@ def main():
     reversed_doc = []
     with open(filename) as file:
         for line in file:
-            reversed_doc.append(line.rstrip().split())
-    print(reversed_doc)
-    reversed_doc.reverse()
-    print(reversed_doc)
+            reversed_doc.append(line.split())
     for i in range(len(reversed_doc)):
         reversed_doc[i].reverse()
     print(reversed_doc)
-
+    with open("4-lists/document_reverse_app/new_story.txt", "w") as outfile:
+        for i in range(len(reversed_doc)):
+            for j in range(len(reversed_doc[i])):
+                outfile.write(reversed_doc[i][j])
+            outfile.write("\n")
 main()
