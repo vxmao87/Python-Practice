@@ -81,6 +81,11 @@ def remove_even_length(lis):
             lis.pop(i)
     return lis
 
+def double_list(lis):
+    for i in range(0, len(lis) + 2, 2):
+        lis.insert(i + 1, lis[i])
+    return lis
+
 def main():
 
     print(list_range([36, 12, 25, 19, 46, 31, 22]))
@@ -108,5 +113,7 @@ def main():
     print(min_to_front([23, 67, 45, 90, 31, 18, 56, 45]))
 
     print(remove_even_length(["scintillate", "obsequious", "omnipotent", "vitiate", "piquant", "melee", "sidereal"]))
+
+    print(double_list(["how", "are", "you?"]))
 
 main()
