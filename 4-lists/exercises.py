@@ -64,6 +64,23 @@ def vowel_count(str):
             final_lis[5] += 1
     return final_lis
 
+def min_to_front(lis):
+    min = lis[0]
+    index = 0
+    for i in range(1, len(lis)):
+        if lis[i] < min:
+            min = lis[i]
+            index = i
+    lis.pop(index)
+    lis.insert(0, min)
+    return lis
+
+def remove_even_length(lis):
+    for i in range(len(lis)):
+        if len(lis[1]) % 2 == 0:
+            lis.pop(i)
+    return lis
+
 def main():
 
     print(list_range([36, 12, 25, 19, 46, 31, 22]))
@@ -86,5 +103,10 @@ def main():
 
     print("Vowel counts:", vowel_count("i think, therefore i am"))
     print("Vowel counts:", vowel_count("you miss 100 percent of the shots you don't take"))
+
+    print(min_to_front([3, 8, 92, 4, 2, 17, 9]))
+    print(min_to_front([23, 67, 45, 90, 31, 18, 56, 45]))
+
+    print(remove_even_length(["scintillate", "obsequious", "omnipotent", "vitiate", "piquant", "melee", "sidereal"]))
 
 main()
