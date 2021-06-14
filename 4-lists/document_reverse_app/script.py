@@ -22,6 +22,7 @@ def main():
     for i in range(len(reversed_doc)):
         for j in range(len(reversed_doc[i]) - 1):
                 reversed_doc[i][j] += " "
+    reversed_doc.reverse()
     with open("4-lists/document_reverse_app/new_story.txt", "w") as outfile:
         for i in range(len(reversed_doc)):
             for j in range(len(reversed_doc[i])):
