@@ -119,6 +119,40 @@ def matrix_add(m_1, m_2):
             m_3[i][j] = m_1[i][j] + m_2[i][j]
     return m_3
 
+def is_magic_square(lis):
+    # Use the sum of the first row as the magic number
+    target_sum = sum(lis[0])
+
+    # Check that all rows add up to the magic number
+    for i in range(len(lis)):
+        if sum(lis[i]) != target_sum:
+            return False
+
+    # Check that all columns add up to the magic number
+    for a in range(len(lis)):
+        new_sum = 0
+        for b in range(len(lis[0])):
+            new_sum += lis[b][a]
+        if new_sum != target_sum:
+            return False
+
+    # Check that the diagonal from the left adds to the magic number
+    new_sum_2 = 0
+    for c in range(len(lis)):
+        new_sum_2 += lis[c][c]
+    if new_sum_2 != target_sum:
+        return False
+
+    # Check that the diagonal from the right adds to the magic number
+    new_sum_3 = 0
+    for d in range(len(lis)):
+        new_sum_3 += lis[d][len(lis) - 1 - d]
+    if new_sum_3 != target_sum:
+        return False
+
+    return True
+    
+
 def main():
 
     print(list_range([36, 12, 25, 19, 46, 31, 22]))
@@ -156,5 +190,7 @@ def main():
     m_1 = [[2, 5, 6], [7, 4, 9], [10, 1, 6]]
     m_2 = [[1, 7, 4], [2, 9, 5], [20, 25, 13]]
     print(matrix_add(m_1, m_2))
+
+    print(is_magic_square([[2, 7, 6], [9, 5, 1], [4, 3, 8]]))
 
 main()
