@@ -1,12 +1,6 @@
+# from DrawingPanel import *
+
 def list_range(lis):
-    # min = lis[0]
-    # max = lis[0]
-    # for i in range(len(lis)):
-    #     if lis[i] > max:
-    #         max = lis[i]
-    #     if lis[i] < min:
-    #         min = lis[i]
-    # return max - min + 1
     return max(lis) - min(lis) + 1
 
 def is_sorted(lis):
@@ -111,11 +105,8 @@ def matrix_add(m_1, m_2):
     m_3 = []
     for a in range(len(m_1)):
         m_3.append([0] * len(m_1[0]))
-    print(m_3)
     for i in range(0, len(m_1)):
         for j in range(0, len(m_1[0])):
-            print("i =", i)
-            print("j =", j)
             m_3[i][j] = m_1[i][j] + m_2[i][j]
     return m_3
 
@@ -151,7 +142,15 @@ def is_magic_square(lis):
         return False
 
     return True
-    
+
+# def grayscale(panel):
+#     px = panel.pixels
+#     for x in range(panel.width):
+#         for y in range(panel.height):
+#             r, g, b = px[x][y]
+#             scale = (r + g + b) / 3
+#             px[x][y] = (scale, scale, scale)
+#     panel.pixels = px
 
 def main():
 
@@ -192,5 +191,9 @@ def main():
     print(matrix_add(m_1, m_2))
 
     print(is_magic_square([[2, 7, 6], [9, 5, 1], [4, 3, 8]]))
+
+    # panel_1 = DrawingPanel(100, 100)
+    # panel_1.fill_oval(10, 10, 20, 40, "red")
+    # grayscale(panel_1)
 
 main()
