@@ -37,6 +37,16 @@ def price_is_right(bids, correct_bid):
             best_bid = bids[i]
     return best_bid
 
+def collapse(lis):
+    final_lis = [0] * ((len(lis) + 1) // 2)
+    lis_len = 0
+    for i in range(0, len(lis) - 3, 2):
+        final_lis[lis_len] = lis[i] + lis[i + 1]
+        lis_len += 1
+    if lis_len != len(final_lis):
+        final_lis[lis_len] = lis[-1]
+    return final_lis
+
 def main():
 
     print(list_range([36, 12, 25, 19, 46, 31, 22]))
@@ -53,5 +63,8 @@ def main():
 
     bids = [200, 300, 250, 1, 950, 40]
     print(price_is_right(bids, 280))
+
+    print(collapse([7, 2, 8, 9, 4, 13, 7, 1, 9, 10]))
+    print(collapse([1, 2, 3, 4, 5]))
 
 main()
