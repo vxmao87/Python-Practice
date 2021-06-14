@@ -47,6 +47,23 @@ def collapse(lis):
         final_lis[lis_len] = lis[-1]
     return final_lis
 
+def vowel_count(str):
+    final_lis = [0] * 6
+    for c in str:
+        if c.lower() == "a":
+            final_lis[0] += 1
+        elif c.lower() == "e":
+            final_lis[1] += 1
+        elif c.lower() == "i":
+            final_lis[2] += 1
+        elif c.lower() == "o":
+            final_lis[3] += 1
+        elif c.lower() == "u":
+            final_lis[4] += 1
+        elif c.lower() == "y":
+            final_lis[5] += 1
+    return final_lis
+
 def main():
 
     print(list_range([36, 12, 25, 19, 46, 31, 22]))
@@ -56,15 +73,18 @@ def main():
     print(is_sorted([23]))
     print(is_sorted([23, 25]))
 
-    print(mode([27, 15, 15, 11, 27]))
+    print("The mode of the list is", mode([27, 15, 15, 11, 27]))
 
-    print(median([5, 2, 4, 17, 55, 4, 3, 26, 18, 2, 17]))
-    print(median([42, 37, 1, 97, 1, 2, 7, 42, 3, 25, 89, 15, 10, 29, 27]))
+    print("The first median is", median([5, 2, 4, 17, 55, 4, 3, 26, 18, 2, 17]))
+    print("The second median is", median([42, 37, 1, 97, 1, 2, 7, 42, 3, 25, 89, 15, 10, 29, 27]))
 
     bids = [200, 300, 250, 1, 950, 40]
-    print(price_is_right(bids, 280))
+    print(price_is_right(bids, 280), "is the closest bid.")
 
     print(collapse([7, 2, 8, 9, 4, 13, 7, 1, 9, 10]))
     print(collapse([1, 2, 3, 4, 5]))
+
+    print("Vowel counts:", vowel_count("i think, therefore i am"))
+    print("Vowel counts:", vowel_count("you miss 100 percent of the shots you don't take"))
 
 main()
