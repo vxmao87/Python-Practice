@@ -86,6 +86,16 @@ def double_list(lis):
         lis.insert(i + 1, lis[i])
     return lis
 
+def scale_by_k(lis):
+    length = len(lis)
+    index = 0
+    for i in range(0, length):
+        if lis[i] > 0:
+            for j in range(lis[i] - 1):
+                lis.insert(index, lis[i])
+                i += 1
+    return lis
+
 def main():
 
     print(list_range([36, 12, 25, 19, 46, 31, 22]))
@@ -115,5 +125,7 @@ def main():
     print(remove_even_length(["scintillate", "obsequious", "omnipotent", "vitiate", "piquant", "melee", "sidereal"]))
 
     print(double_list(["how", "are", "you?"]))
+
+    print(scale_by_k([4, 1, 2, 0, 3]))
 
 main()
