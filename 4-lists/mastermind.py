@@ -1,9 +1,8 @@
 # This method plays a game of Mastermind with the user.
 
-from random import *
 import random
 
-code_length = 5
+code_length = 4
 
 def print_intro():
     print("Let's play Mastermind! Guess my {}-digit number, and for".format(code_length))
@@ -41,7 +40,7 @@ def play_game():
             player_input = input("Type any {}-digit number: ".format(code_length))
 
         while len(player_input) != code_length:
-            print("Not a 4-digit number. Try again.")
+            print("Not a {}-digit number. Try again.".format(code_length))
             player_input = input("Type any {}-digit number: ".format(code_length))
 
         for i in range(len(player_board)):
@@ -59,10 +58,12 @@ def play_game():
         if rnum_rplace != code_length:
             wrong_nums = [0] * len(player_board)
             for i in range(len(player_board)):
+                done_looking = False
                 for j in range(len(player_board)):
-                    if right_nums[i] != 1 and wrong_nums[j] != 2 and right_nums[j] != 1 and player_board[i] == code_list[j]:
+                    if not done_looking and right_nums[i] != 1 and wrong_nums[j] != 2 and right_nums[j] != 1 and player_board[i] == code_list[j]:
                         rnum_wplace += 1
                         wrong_nums[j] = 2
+                        done_looking = True
             print("You have {} correct number(s) in the right place, and {} correct number(s) in the wrong place.".format(rnum_rplace, rnum_wplace))
             print(right_nums)
             print(wrong_nums)
