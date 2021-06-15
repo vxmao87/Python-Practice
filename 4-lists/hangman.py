@@ -25,6 +25,19 @@ def word_is_complete(board):
             return False
     return True
 
+def evaluate_lives(lives):
+    if lives == 1:
+        print("You have 1 life remaining.")
+    else:
+        print("You have {} lives remaining.".format(lives))
+
+def end_game(word, lives):
+    if lives == 0:
+        print("Sorry, you lose! The word was: {}.".format(word))
+    else:
+        print("You win!")
+        print("You ended the game with {} lives. Congratulations!".format(lives))
+
 def play_game():
     alphabet_list = list(string.ascii_lowercase)
     word = "supercalifragilisticexpialidocious"
@@ -43,20 +56,13 @@ def play_game():
         print(letter)
         if letter not in word_list:
             lives -= 1
-            if lives > 1:
-                print("Your letter is not in the word! You have {} lives left.".format(lives))
-            elif lives == 1:
-                print("Your letter is not in the word! You have 1 life left.")
         else:
-            print("Your letter is in the word! You have {} lives left.".format(lives))
+            print("Your letter is in the word!")
             for i in range(len(word_list)):
                 if word_list[i] == letter:
                     player_board[i] = letter
-    if lives == 0:
-        print("Sorry, you lose! The word was: {}.".format(word))
-    else:
-        print("You win!")
-        print("You ended the game with {} lives. Congratulations!".format(lives))
+        evaluate_lives(lives)
+    end_game(word, lives)
 
 def main():
     print_intro()
