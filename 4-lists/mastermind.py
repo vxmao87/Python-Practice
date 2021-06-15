@@ -23,7 +23,7 @@ def create_code():
     return code
 
 def play_game():
-    secret_code = create_code()
+    secret_code = "4221"
     code_list = []
     for n in secret_code:
         code_list.append(n)
@@ -56,17 +56,16 @@ def play_game():
 
         print(right_nums)
         if rnum_rplace != code_length:
-            wrong_nums = [0] * len(player_board)
             for i in range(len(player_board)):
                 done_looking = False
                 for j in range(len(player_board)):
-                    if not done_looking and right_nums[i] != 1 and wrong_nums[j] != 2 and right_nums[j] != 1 and player_board[i] == code_list[j]:
+                    if not done_looking and right_nums[j] != 1 and right_nums[j] != 2 and player_board[i] == code_list[j]:
                         rnum_wplace += 1
-                        wrong_nums[j] = 2
+                        right_nums[j] = 2
                         done_looking = True
             print("You have {} correct number(s) in the right place, and {} correct number(s) in the wrong place.".format(rnum_rplace, rnum_wplace))
             print(right_nums)
-            print(wrong_nums)
+
         guesses += 1
 
     print("You win! You guessed my number {} in {} guess(es)!".format(secret_code, guesses))
