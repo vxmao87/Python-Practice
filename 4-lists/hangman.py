@@ -1,6 +1,9 @@
 # This program plays a game of Hangman with the user.
 
 import string
+from random import *
+
+player_score = 0
 
 # Prints the introduction to the program
 def print_intro():
@@ -41,12 +44,21 @@ def evaluate_lives(lives):
         print("You have {} lives remaining.".format(lives))
 
 # Depending on the number of lives, prints a message accordingly
-def end_game(word, lives):
+def end_game(word, lives, player_score):
     if lives == 0:
         print("Sorry, you lose! The word was: {}.".format(word))
     else:
         print("You win!")
         print("You ended the game with {} lives. Congratulations!".format(lives))
+        player_score += 1
+
+# Asks the player if they want to play the game again
+def play_again():
+    answer = input("Would you like th play again? Type (y/n): ").lower()
+    if answer == "y":
+        return answer
+    else:
+        print("Thank you for playing!")
 
 # Play a game of Hangman!
 def play_game():
@@ -55,7 +67,8 @@ def play_game():
     alphabet_list = list(string.ascii_lowercase)
 
     # The word the user has to guess
-    word = "supercalifragilisticexpialidocious"
+    dictionary = ["indefatigable", "omnipotent", "eccentric", "gasconade", "handkerchief", "magnanimous"]
+    word = choice(dictionary)
 
     # Breaks up the word into characters and stores each into a list
     word_list = []
@@ -67,7 +80,7 @@ def play_game():
     player_board = ["_"] * (len(word_list))
 
     # Number of lives in the game
-    lives = 10
+    lives = 6
 
     # The game plays until the whole word is guessed
     # or the player runs out of lives
@@ -102,11 +115,17 @@ def play_game():
         evaluate_lives(lives)
 
     # Ends the game
-    end_game(word, lives)
+    end_game(word, lives, player_score)
+    
+    # Prints a message asking if the player wants to play again
+    return play_again()
 
 # Main method
 def main():
     print_intro()
-    play_game()
+    while play_game():
+        pass
+    global player_score
+    print("Your score is: {}".format(player_score))
 
 main()
