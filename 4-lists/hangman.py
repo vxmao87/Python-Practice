@@ -7,6 +7,14 @@ def print_intro():
     print("that make up the word, but you only have a limitied number")
     print("of times to guess, so be careful!")
 
+def grab_letter(alphabet_list, player_input):
+    letter = ""
+    for i in range(len(alphabet_list)):
+        if alphabet_list[i] == player_input:
+            letter = alphabet_list.pop(i)
+            break
+    return letter
+
 def print_board(board):
     for i in range(len(board)):
         print(board[i], end = "")
@@ -18,22 +26,20 @@ def word_is_complete(board):
     return True
 
 def play_game():
-    alphabet = string.ascii_lowercase
-    alphabet_list = list(alphabet)
-    print(alphabet_list)
-    word = "exhilarating"
+    alphabet_list = list(string.ascii_lowercase)
+    word = "supercalifragilisticexpialidocious"
     word_list = []
     for c in word:
         word_list.append(c)
     player_board = ["_"] * (len(word_list))
-    lives = len(word_list)
+    lives = 10
     while not word_is_complete(player_board) and lives != 0:
         print_board(player_board)
         player_input = input(" Type any letter from A to Z: ")
         while player_input not in alphabet_list:
             print("Letter has already been used or value is invalid! Try again.")
             player_input = input("Type another letter from A to Z: ")
-        letter = alphabet_list.remove(player_input.lower())
+        letter = grab_letter(alphabet_list, player_input)
         print(letter)
         if letter not in word_list:
             lives -= 1
