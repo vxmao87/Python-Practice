@@ -20,6 +20,7 @@ def play_game():
         code_list.append(n)
     print(code_list)
     player_board = [0] * len(code_list)
+    guesses = 0
 
     while not code_is_correct(code_list, player_board):
         player_input = input("Type any 4-digit number: ")
@@ -42,23 +43,21 @@ def play_game():
             if code_list[i] == player_board[i]:
                 rnum_rplace += 1
                 right_nums[i] = 1
-            # else:
-            #     for i in range(len(player_board)):
-            #         num = player_board[i]
-            #         if right_nums[i] != 1 and num == code_list[i]:
-            #             rnum_wplace += 1
 
         print(right_nums)
         if rnum_rplace != 4:
+            wrong_nums = [0] * len(player_board)
             for i in range(len(player_board)):
                 for j in range(len(player_board)):
-                    if right_nums[i] != 1 and right_nums[i] != 2 and right_nums[j] != 1 and player_board[i] == code_list[j]:
+                    if right_nums[i] != 1 and wrong_nums[j] != 2 and right_nums[j] != 1 and player_board[i] == code_list[j]:
                         rnum_wplace += 1
-                        right_nums[i] = 2
+                        wrong_nums[j] = 2
             print("You have {} correct number(s) in the right place, and {} correct number(s) in the wrong place.".format(rnum_rplace, rnum_wplace))
             print(right_nums)
+            print(wrong_nums)
+        guesses += 1
 
-    print("You win! You guessed my number {}!".format(secret_code))
+    print("You win! You guessed my number {} in {} guess(es)!".format(secret_code, guesses))
 
 def main():
     print_intro()
