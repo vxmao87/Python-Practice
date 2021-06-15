@@ -27,6 +27,7 @@ def grab_letter(alphabet_list, player_input):
 def print_board(board):
     for i in range(len(board)):
         print(board[i], end = "")
+    print()
 
 # Checks the letter board for any remaining blanks - if there are none,
 # the player has guessed the whole word completely
@@ -44,21 +45,29 @@ def evaluate_lives(lives):
         print("You have {} lives remaining.".format(lives))
 
 # Depending on the number of lives, prints a message accordingly
-def end_game(word, lives, player_score):
+def won_game(word, lives):
     if lives == 0:
         print("Sorry, you lose! The word was: {}.".format(word))
+        return False
     else:
         print("You win!")
         print("You ended the game with {} lives. Congratulations!".format(lives))
-        player_score += 1
+        return True
 
 # Asks the player if they want to play the game again
 def play_again():
     answer = input("Would you like th play again? Type (y/n): ").lower()
-    if answer == "y":
-        return answer
-    else:
-        print("Thank you for playing!")
+    while answer not in ("y", "n"):
+        print("Ivalid input. Try again!")
+        answer = input("Would you like th play again? Type (y/n): ").lower()
+    return answer == "y"
+
+def choose_word(filename):
+    dictionary = []
+    with open(filename) as file:
+        for line in file:
+            dictionary.append(line)
+    return choice(dictionary)
 
 # Play a game of Hangman!
 def play_game():
@@ -67,8 +76,7 @@ def play_game():
     alphabet_list = list(string.ascii_lowercase)
 
     # The word the user has to guess
-    dictionary = ["indefatigable", "omnipotent", "eccentric", "gasconade", "handkerchief", "magnanimous"]
-    word = choice(dictionary)
+    word = choose_word("4-lists/hangman/dict.txt")
 
     # Breaks up the word into characters and stores each into a list
     word_list = []
@@ -77,16 +85,19 @@ def play_game():
 
     # This is the player's board, or the word replaced with blanks.
     # It will fill up with the letters that the player guesses correctly.
-    player_board = ["_"] * (len(word_list))
+    player_board = ["_"] * (len(word_list) - 1)
 
     # Number of lives in the game
     lives = 6
+
+    # Set the player score as a global variable for use around the code
+    global player_score
 
     # The game plays until the whole word is guessed
     # or the player runs out of lives
     while not word_is_complete(player_board) and lives != 0:
         print_board(player_board)
-        player_input = input(" Type any letter from A to Z: ")
+        player_input = input("Type any letter from A to Z: ")
 
         # If the input is not something in the alphabet list, 
         # the player is prompted again for a valid input.
@@ -96,7 +107,8 @@ def play_game():
 
         # Obtains the letter from the alphabet list - the user input is
         # guaranteed to match with something inside the alphabet list
-        # because of the above 'while' method
+        # because of the above 'while' method - the letter is removed
+        # from the alphabet list to prevent it from being used again
         letter = grab_letter(alphabet_list, player_input)
 
         # If the letter is not in the word, the player loses one life - 
@@ -114,17 +126,20 @@ def play_game():
         # Evaluate the number of lives after every guess
         evaluate_lives(lives)
 
-    # Ends the game
-    end_game(word, lives, player_score)
-    
-    # Prints a message asking if the player wants to play again
-    return play_again()
+    # Ends the game and adds points if player wins the game
+    if won_game(word, lives):
+        player_score += 1
 
 # Main method
 def main():
     print_intro()
-    while play_game():
-        pass
+    play_game()
+
+    # Run the game again if the player wishes to do so
+    while play_again():
+        play_game()
+
+    # Prints the final score
     global player_score
     print("Your score is: {}".format(player_score))
 
