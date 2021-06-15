@@ -1,9 +1,12 @@
 # This method plays a game of Mastermind with the user.
 
 from random import *
+import random
+
+code_length = 5
 
 def print_intro():
-    print("Let's play Mastermind! Guess my four-digit number, and for")
+    print("Let's play Mastermind! Guess my {}-digit number, and for".format(code_length))
     print("every guess you make, I'll tell you whether you have your")
     print("numbers in the right or wrong places, and how many of each!")
 
@@ -13,25 +16,33 @@ def code_is_correct(code_list, player_board):
             return False
     return True
 
+def create_code():
+    code = ""
+    global code_length
+    for i in range(code_length):
+        code += str(random.randint(0, 9))
+    return code
+
 def play_game():
-    secret_code = "5936"
+    secret_code = create_code()
     code_list = []
     for n in secret_code:
         code_list.append(n)
     print(code_list)
     player_board = [0] * len(code_list)
     guesses = 0
+    global code_length
 
     while not code_is_correct(code_list, player_board):
-        player_input = input("Type any 4-digit number: ")
+        player_input = input("Type any {}-digit number: ".format(code_length))
 
         while not player_input.isdigit():
             print("Not a number. Try again.")
-            player_input = input("Type any 4-digit number: ")
+            player_input = input("Type any {}-digit number: ".format(code_length))
 
-        while len(player_input) != 4:
+        while len(player_input) != code_length:
             print("Not a 4-digit number. Try again.")
-            player_input = input("Type any 4-digit number: ")
+            player_input = input("Type any {}-digit number: ".format(code_length))
 
         for i in range(len(player_board)):
             player_board[i] = player_input[i]
@@ -45,7 +56,7 @@ def play_game():
                 right_nums[i] = 1
 
         print(right_nums)
-        if rnum_rplace != 4:
+        if rnum_rplace != code_length:
             wrong_nums = [0] * len(player_board)
             for i in range(len(player_board)):
                 for j in range(len(player_board)):
