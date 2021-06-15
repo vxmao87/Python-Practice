@@ -23,11 +23,10 @@ def create_code():
     return code
 
 def play_game():
-    secret_code = "4221"
+    secret_code = create_code()
     code_list = []
     for n in secret_code:
         code_list.append(n)
-    print(code_list)
     player_board = [0] * len(code_list)
     guesses = 0
     global code_length
