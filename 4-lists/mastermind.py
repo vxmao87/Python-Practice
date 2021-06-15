@@ -48,8 +48,17 @@ def play_game():
             #         if right_nums[i] != 1 and num == code_list[i]:
             #             rnum_wplace += 1
 
+        print(right_nums)
         if rnum_rplace != 4:
-            print("You have {} correct numbers in the right place, and {} correct numbers in the wrong place.".format(rnum_rplace, rnum_wplace))
+            for i in range(len(player_board)):
+                for j in range(len(player_board)):
+                    if right_nums[i] != 1 and right_nums[i] != 2 and right_nums[j] != 1 and player_board[i] == code_list[j]:
+                        rnum_wplace += 1
+                        right_nums[i] = 2
+            print("You have {} correct number(s) in the right place, and {} correct number(s) in the wrong place.".format(rnum_rplace, rnum_wplace))
+            print(right_nums)
+
+    print("You win! You guessed my number {}!".format(secret_code))
 
 def main():
     print_intro()
