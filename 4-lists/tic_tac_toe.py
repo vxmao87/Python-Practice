@@ -4,7 +4,7 @@ def print_intro():
     pass
 
 def wins(grid, player):
-    icon = "x"
+    icon = ""
     if player == "1":
         icon = "x"
     else:
@@ -18,6 +18,16 @@ def wins(grid, player):
     else:
         return False
 
+def grab_position(pos):
+    user_input = int(input("Type in the {} you want your icon on: ".format(pos)))
+    while user_input < 0 or user_input > 2:
+        print("Invalid input. Try again.")
+        user_input = int(input("Type in the {} you want your icon on: ".format(pos)))
+    return user_input
+
+def is_empty(grid, row, column):
+    return grid[row][column] == "_"
+
 def play_game():
     grid = [["_"] * 3, ["_"] * 3, ["_"] * 3]
     print(grid)
@@ -26,8 +36,15 @@ def play_game():
     print(wins(grid, "2"))
     while not wins(grid, "1") and not wins(grid, "2"):
         if not wins(grid, "1"):
-            print("Type in two numbers, where the first number is the row you want to place your icon,")
-            player_input = input("and the second number is the column you want to place your icon (1-3): ")
+            row = grab_position("row")
+            column = grab_position("column")
+            input_list = []
+            input_list.append(row)
+            input_list.append(column)
+            print(input_list)
+            if is_empty(grid, row, column):
+                grid[row][column] = "x"
+
             
 
 
