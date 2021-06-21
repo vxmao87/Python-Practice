@@ -3,6 +3,8 @@
 def print_intro():
     pass
 
+# Determines if there is a win on the grid - in other words, if there is three of the same
+# icon in any row, column, or diagonal
 def wins(grid, player):
     icon = ""
     if player == "1":
@@ -18,6 +20,7 @@ def wins(grid, player):
     else:
         return False
 
+# Takes in and returns the user's input for where they want their icon to be placed
 def grab_position(pos):
     user_input = int(input("Type in the {} you want your icon on: ".format(pos)))
     while user_input < 0 or user_input > 2:
