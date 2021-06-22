@@ -28,6 +28,7 @@ def grab_position(pos):
         user_input = int(input("Type in the {} you want your icon on: ".format(pos)))
     return user_input
 
+# Returns true if the given spot is empty
 def is_empty(grid, row, column):
     return grid[row][column] == "_"
 
