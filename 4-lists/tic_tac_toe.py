@@ -32,6 +32,7 @@ def grab_position(pos):
 def is_empty(grid, row, column):
     return grid[row][column] == "_"
 
+# Play a game of Tic Tac Toe!
 def play_game():
     grid = [["_"] * 3, ["_"] * 3, ["_"] * 3]
     print(grid)
@@ -48,8 +49,6 @@ def play_game():
             print(input_list)
             if is_empty(grid, row, column):
                 grid[row][column] = "x"
-
-            
 
 
 def main():
