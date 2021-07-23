@@ -1,7 +1,10 @@
 # Prints 2^n stars depending on the value of n
 def star_string(n):
+    # error case
     if n < 0:
         raise ValueError("This number is invalid. Try again!")
+
+    # base case
     if n == 0:
         return "*"
     else:
