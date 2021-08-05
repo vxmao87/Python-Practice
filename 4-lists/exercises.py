@@ -31,6 +31,22 @@ def price_is_right(bids, correct_bid):
             best_bid = bids[i]
     return best_bid
 
+def contains(a1, a2):
+    if len(a2) == 0:
+        return True
+    if len(a1) == 0 and len(a2) != 0:
+        return False
+
+    for i in range(len(a1) - len(a2) + 1):
+        count = 0
+        for j in range(len(a2)):
+            if a1[i + j] == a2[j]:
+                count += 1
+        if count == len(a2):
+            return True
+    
+    return False
+
 def collapse(lis):
     final_lis = [0] * ((len(lis) + 1) // 2)
     lis_len = 0
@@ -168,6 +184,12 @@ def main():
 
     bids = [200, 300, 250, 1, 950, 40]
     print(price_is_right(bids, 280), "is the closest bid.")
+
+    a1 = [1, 6, 2, 1, 4, 1, 2, 1, 8]
+    a2 = [1, 2, 1]
+    b2 = [1, 5, 1]
+    print("Does this contain this?", contains(a1, a2))
+    print("Does this contain this?", contains(a1, b2))
 
     print(collapse([7, 2, 8, 9, 4, 13, 7, 1, 9, 10]))
     print(collapse([1, 2, 3, 4, 5]))
