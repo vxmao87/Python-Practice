@@ -214,8 +214,4 @@ def main():
 
     print(is_magic_square([[2, 7, 6], [9, 5, 1], [4, 3, 8]]))
 
-    # panel_1 = DrawingPanel(100, 100)
-    # panel_1.fill_oval(10, 10, 20, 40, "red")
-    # grayscale(panel_1)
-
 main()
