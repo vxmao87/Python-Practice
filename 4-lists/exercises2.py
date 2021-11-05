@@ -91,6 +91,37 @@ def scale_by_k(lis):
             index += lis[index]
     return lis
 
+def remove_duplicates(lis):
+    # index = 0
+    # while not index >= len(lis) - 1:
+    #     if lis[index] == lis[index + 1]:
+    #         lis.pop(index)
+    #     else:
+    #         index += 1
+    # return lis
+
+    # if len(lis) < 2:
+    #     return len(lis)
+    # index = 1
+    # word = lis[0]
+    # for i in range(1, len(lis)):
+    #     if lis[i] != word:
+    #         lis[index] = lis[i]
+    #         index += 1
+    #         word = lis[i]
+    # return lis
+
+    # if len(lis) == 0:
+    #     return -1
+    
+    write_pointer = 1
+    for read_pointer in range(1, len(lis)):
+        if not lis[read_pointer] == lis[read_pointer - 1]:
+            lis[write_pointer] = lis[read_pointer]
+            write_pointer += 1
+    print(lis)
+    return write_pointer
+
 def main():
     print("The range is", list_range([36, 12, 25, 19, 46, 31, 22, 11]))
     print(is_sorted([16.1, 12.3, 22.2, 14.4]))
@@ -113,5 +144,8 @@ def main():
     print(double_list(["how", "are", "you"]))
 
     print(scale_by_k([4, 0, 0, 0, 1, 2, -5, 0, -10, -45, -2, 3]))
+
+    print(remove_duplicates(["be", "be", "is", "not", "or", "question", "that", "the", "to", "to"]))
+    print(remove_duplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]))
 
 main()

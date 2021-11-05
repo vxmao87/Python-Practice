@@ -1,7 +1,7 @@
 # This program plays a game of Hangman with the user.
 
 import string
-from random import *
+import random
 
 player_score = 0
 
@@ -67,7 +67,7 @@ def choose_word(filename):
     with open(filename) as file:
         for line in file:
             dictionary.append(line)
-    return choice(dictionary)
+    return random.choice(dictionary)
 
 # Play a game of Hangman!
 def play_game():
@@ -116,7 +116,7 @@ def play_game():
         # the letter the user has inputted
         if letter not in word_list:
             lives -= 1
-            print("Your letter is not in the word!")
+            print("Your letter is not in the word! One life lost...")
         else:
             print("Your letter is in the word!")
             for i in range(len(word_list)):
