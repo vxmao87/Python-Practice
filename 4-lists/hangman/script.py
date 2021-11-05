@@ -42,21 +42,21 @@ def evaluate_lives(lives):
     if lives == 1:
         print("You have 1 life remaining.")
     else:
-        print("You have {} lives remaining.".format(lives))
+        print(f"You have {lives} lives remaining.")
 
 # Depending on the number of lives, prints a message accordingly
 def won_game(word, lives):
     if lives == 0:
-        print("Sorry, you lose! The word was: {}.".format(word))
+        print(f"Sorry, you lose! The word was: {word}.")
         return False
     else:
         print("You win!")
-        print("You ended the game with {} lives. Congratulations!".format(lives))
+        print(f"You ended the game with {lives} lives. Congratulations!")
         return True
 
 # Asks the player if they want to play the game again
 def play_again():
-    answer = input("Would you like th play again? Type (y/n): ").lower()
+    answer = input("Would you like to play again? Type (y/n): ").lower()
     while answer not in ("y", "n"):
         print("Ivalid input. Try again!")
         answer = input("Would you like th play again? Type (y/n): ").lower()
@@ -78,14 +78,9 @@ def play_game():
     # The word the user has to guess
     word = choose_word("4-lists/hangman/dict.txt")
 
-    # Breaks up the word into characters and stores each into a list
-    word_list = []
-    for c in word:
-        word_list.append(c)
-
     # This is the player's board, or the word replaced with blanks.
     # It will fill up with the letters that the player guesses correctly.
-    player_board = ["_"] * (len(word_list) - 1)
+    player_board = ["_"] * (len(word) - 1)
 
     # Number of lives in the game
     lives = 6
@@ -114,13 +109,13 @@ def play_game():
         # If the letter is not in the word, the player loses one life - 
         # otherwise, the blanks inside player_board will be filled with
         # the letter the user has inputted
-        if letter not in word_list:
+        if letter not in word:
             lives -= 1
             print("Your letter is not in the word! One life lost...")
         else:
             print("Your letter is in the word!")
-            for i in range(len(word_list)):
-                if word_list[i] == letter:
+            for i in range(len(word)):
+                if word[i] == letter:
                     player_board[i] = letter
 
         # Evaluate the number of lives after every guess
@@ -141,6 +136,6 @@ def main():
 
     # Prints the final score
     global player_score
-    print("Your score is: {}".format(player_score))
+    print(f"Your score is: {player_score}")
 
 main()
