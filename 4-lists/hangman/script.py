@@ -1,6 +1,5 @@
 # This program plays a game of Hangman with the user.
 
-import string
 import random
 
 player_score = 0
@@ -10,32 +9,7 @@ def print_intro():
     print("Welcome to Hangman! Guess the word by guessing the letters")
     print("that make up the word, but you only have a limitied number")
     print("of times to guess, so be careful!")
-
-# Retrieves the player's inputted letter from the alphabet list by 
-# returning the letter after it has been removed - code breaks once
-# the letter is found
-def grab_letter(alphabet_list, player_input):
-    letter = ""
-    for i in range(len(alphabet_list)):
-        if alphabet_list[i] == player_input:
-            letter = alphabet_list.pop(i)
-            break
-    return letter
-
-# Prints the set of letters that the player has already guessed
-# (or blanks if the letters have not been guessed yet)
-def print_board(board):
-    for i in range(len(board)):
-        print(board[i], end = "")
     print()
-
-# Checks the letter board for any remaining blanks - if there are none,
-# the player has guessed the whole word completely
-def word_is_complete(board):
-    for i in range(len(board)):
-        if board[i] == "_":
-            return False
-    return True
 
 # Prints the number of lives the player has left
 def evaluate_lives(lives):
@@ -47,7 +21,7 @@ def evaluate_lives(lives):
 # Depending on the number of lives, prints a message accordingly
 def won_game(word, lives):
     if lives == 0:
-        print(f"Sorry, you lose! The word was: {word}.")
+        print(f"Sorry, you lose! The word was: {word}")
         return False
     else:
         print("You win!")
@@ -72,8 +46,8 @@ def choose_word(filename):
 # Play a game of Hangman!
 def play_game():
 
-    # Creates a list of letters of the alphabet
-    alphabet_list = list(string.ascii_lowercase)
+    # Creates a list of used letters
+    used_letters = []
 
     # The word the user has to guess
     word = choose_word("4-lists/hangman/dict.txt")
@@ -90,36 +64,34 @@ def play_game():
 
     # The game plays until the whole word is guessed
     # or the player runs out of lives
-    while not word_is_complete(player_board) and lives != 0:
-        print_board(player_board)
-        player_input = input("Type any letter from A to Z: ")
+    while "_" in player_board and lives != 0:
+        print(f"{' '.join(player_board)}")
+        player_input = input("Type any letter from A to Z: ").lower()
 
         # If the input is not something in the alphabet list, 
         # the player is prompted again for a valid input.
-        while player_input not in alphabet_list:
+        while player_input in used_letters or len(player_input) > 1 or len(player_input) == 0:
             print("Letter has already been used or value is invalid! Try again.")
+            print(f"{' '.join(player_board)}")
             player_input = input("Type another letter from A to Z: ")
 
-        # Obtains the letter from the alphabet list - the user input is
-        # guaranteed to match with something inside the alphabet list
-        # because of the above 'while' method - the letter is removed
-        # from the alphabet list to prevent it from being used again
-        letter = grab_letter(alphabet_list, player_input)
+        used_letters.append(player_input)
 
         # If the letter is not in the word, the player loses one life - 
         # otherwise, the blanks inside player_board will be filled with
         # the letter the user has inputted
-        if letter not in word:
+        if player_input not in word:
             lives -= 1
             print("Your letter is not in the word! One life lost...")
         else:
             print("Your letter is in the word!")
             for i in range(len(word)):
-                if word[i] == letter:
-                    player_board[i] = letter
+                if word[i] == player_input:
+                    player_board[i] = player_input
 
         # Evaluate the number of lives after every guess
-        evaluate_lives(lives)
+        if lives != 0:
+            evaluate_lives(lives)
 
     # Ends the game and adds points if player wins the game
     if won_game(word, lives):
